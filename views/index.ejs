@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drugi projekt</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="position">
+            <h1>Drugi projekt</h1>
+            <hr />
+            <div class="sql-inj-container">
+                <h2>SQL ubacivanje (SQL injection)</h2>
+                <p>UPUTE:
+                    <i>Cilj je dohvatiti podatke od korisnika "admin". Nakon što se upišu potrebne informacije (username
+                        i PIN),
+                        prikazuju se podatci iz baze za tog korisnika. "admin" ima PIN 654321. Kada se uključi SQL
+                        ubacivanje, može se poslati <mark><b>admin' OR '1'='1</b></mark> kao username, uz bilokoji PIN.
+                    </i>
+                </p>
+                <div class="order">
+                    <div class="sql-inj-content">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="vulnerable1" name="vulnerable1">
+                            <label>Uključi/isključi</label>
+                        </div>
+                        <div class="input-container">
+                            <div>
+                                <label>Username:</label>
+                                <input type="text" id="message" name="message">
+
+                                <label>PIN:</label>
+                                <input type="password" id="pin" name="pin" maxlength="6">
+
+                                <button id="button" class="button">Pošalji podatke</button>
+                            </div>
+                        </div>
+                        <p id="error"></p>
+                    </div>
+                    <div class="user-info" id="user-info">
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="bad-auth-container">
+                <h2>Loša autentifikacija (Broken Authentication)</h2>
+                <p>UPUTE: <i>
+                        Kada je uključena loša autentifikacija moguće je neograničeno puta slati username i lozinku
+                        te su poruke o greškama loše. Ako nije uključena, postoji CAPTCHA te su poruke prikladnije.
+                        Možete se probati ulogirati s korisnikom "admin" iz SQL dijela zadatka.
+                    </i></p>
+                <div class="order">
+                    <div class="bad-auth-content">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="vulnerable2" name="vulnerable2">
+                            <label>Uključi/isključi</label>
+                        </div>
+                        <div class="input-container">
+                            <form id="login-form" class="login-form">
+                                <label>Username:</label>
+                                <input type="text" id="username" name="username">
+
+                                <label>Password:</label>
+                                <input type="password" id="password" name="password">
+
+                                <button id="button2" class="button" type="submit">Pošalji podatke</button>
+                                <p id="error-message"></p>
+                                <div class="g-recaptcha" data-sitekey="<%= siteKey %>"></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="user-login" id="user-login"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="/scripts/sqlInj.js"></script>
+    <script src="/scripts/brokenAuth.js"></script>
+</body>
+
+</html>
